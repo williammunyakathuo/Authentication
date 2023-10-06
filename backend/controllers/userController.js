@@ -1,7 +1,26 @@
+import generateToken from '../utils/token.js'
 import User from '../models/userModels.js'
 
 const authUser = async(req, res) => {
-    res.status(200).json({message : 'auth user'})
+    const {email, password} = req.body;
+
+    const user = await User.findOne({email});
+
+    if (user && (await user.matchPasswords(password))) {
+        generateToken(res, user._id)
+        res.status(200).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            password: user.password,
+            token : user.token
+        })
+    } else {
+        res.status(401);
+        throw new Error ('Invalid user data')
+    }
+
+
 }
 
 //register new user
@@ -21,12 +40,16 @@ const registerUser = async(req, res) => {
     })
 
     if (user) {
+        generateToken(res, user._id)
         res.status(201).json({
             _id: user._id,
             name: user.name,
             email: user.email,
             password: user.password
         })
+    } else {
+        res.status(400);
+        throw new Error ('Invalid user data')
     }
 
 }
