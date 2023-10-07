@@ -12,8 +12,7 @@ const authUser = async(req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            password: user.password,
-            token : user.token
+            password: user.password
         })
     } else {
         res.status(401);
@@ -57,7 +56,12 @@ const registerUser = async(req, res) => {
 //logout user
 
 const logoutUser = async(req, res) => {
-    res.status(200).json({message : 'Logout user'})
+    res.cookie('jwt', '',{
+        httpOnly: true,
+        expires: new Date(0)
+    })
+
+    res.status(200).json({message: 'User loged out'})
 }
 
 //get user profie

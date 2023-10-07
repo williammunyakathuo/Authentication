@@ -1,6 +1,11 @@
 POST   http://localhost:8000/api/users/auth
 Content-Type: application/json
 
+{
+    "email" : "email@jdoe.com",
+    "password" : "12345qwerty"
+}
+
 ###
 
 POST   http://localhost:8000/api/users/
