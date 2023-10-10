@@ -18,7 +18,7 @@ function Hero() {
                                 Sign In
                             </Button>
                         </LinkContainer>
-                        <LinkContainer to='signup'>
+                        <LinkContainer to='/register'>
                             <Button variant="secondary" >
                                 Register
                             </Button>

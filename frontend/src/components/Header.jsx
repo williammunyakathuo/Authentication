@@ -18,7 +18,7 @@ function Header() {
                                     <FaSignInAlt /> Sign In
                                 </Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to='/signup'>
+                            <LinkContainer to='/register'>
                                 <Nav.Link >
                                     <FaSignOutAlt /> Sign Up
                                 </Nav.Link>
