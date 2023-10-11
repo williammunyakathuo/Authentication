@@ -20,6 +20,7 @@ function Header() {
             await logoutApiCall().unwrap()
             dispatch(logout())
             navigate('/')
+            toast.succes('You are logged out now')
         } catch (err) {
             toast.error(err)
         }

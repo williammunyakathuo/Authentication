@@ -33,6 +33,7 @@ const LoginScreen = () => {
             const res = await login({email, password}).unwrap()
             dispatch(setCredentials({...res}))
             navigate('/')
+            toast.success(`Welcome to your portal `)
         } catch (err) {
             toast.error(err?.data?.message || err.error)
         }
